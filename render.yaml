@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: n8n-agent-kdp
+    env: docker
+    repo: https://github.com/DamianNowak933/n8n-agent-kdp
+    branch: main
+    plan: standard
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: "admin"
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: "twoje_mocne_haslo"
+      - key: N8N_HOST
+        value: "n8n-agent-kdp.onrender.com"
+      - key: WEBHOOK_TUNNEL_URL
+        value: "https://n8n-agent-kdp.onrender.com"
+      - key: GENERIC_TIMEZONE
+        value: "Europe/Warsaw"
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
